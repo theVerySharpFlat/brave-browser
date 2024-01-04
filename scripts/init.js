@@ -23,6 +23,14 @@ if (!fs.existsSync(path.join(braveCoreDir, '.git'))) {
 const braveCoreSha = util.runGit(braveCoreDir, ['rev-parse', 'HEAD'])
 Log.progress(`brave-core repo at ${braveCoreDir} is at commit ID ${braveCoreSha}`)
 
+const replaceCMD = "find . -type f -exec sed -i \"s/com\\.brave/com\\.bruh/g\" {} +"
+util.run(replaceCMD, [], {
+  cwd: braveCoreDir,
+  env: process.env,
+  stdio: 'inherit',
+  shell: true,
+  git_cwd: '.', })
+
 let npmCommand = 'npm'
 if (process.platform === 'win32') {
   npmCommand += '.cmd'
