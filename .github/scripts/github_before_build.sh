@@ -9,5 +9,4 @@ npm install
 
 npm run init
 
-cd $_main_repo
 npm config set target_arch arm
