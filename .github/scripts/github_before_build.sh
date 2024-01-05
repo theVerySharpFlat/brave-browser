@@ -5,6 +5,8 @@
 _root_dir=$(dirname $(greadlink -f $0))
 _main_repo="$_root_dir/src/brave"
 
+cd $_main_repo
+
 npm install
 
 npm run init
