@@ -14,7 +14,7 @@ fi
 echo $(date +%s) | tee -a "$_root_dir/build_times.log"
 echo "status=running" >> $GITHUB_OUTPUT
 
-timeout -k 7m -s SIGTERM ${_remaining_time:-19680}s npm run init; npm install; npm config set target_arch arm; npm run build Release # 328 m as default $_remaining_time
+timeout -k 7m -s SIGTERM ${_remaining_time:-19680}s bash -c "npm run init; npm install; npm config set target_arch arm; npm run build Release" # 328 m as default $_remaining_time
 
 echo $(date +%s) | tee "$_root_dir/build_finished.log"
 echo "status=finished" >> $GITHUB_OUTPUT
